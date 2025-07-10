@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FraseGo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+    <div class="container" style="max-width:420px;width:100vw;margin:0;box-sizing:border-box;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-end;padding-right:2vw;">
+        <div class="frase-box" style="width:100%;max-width:370px;min-width:260px;min-height:420px;max-height:98vh;background:#fff;border-radius:1.1rem;padding:1.1rem 1.1rem 0.7rem 1.1rem;box-shadow:0 2px 12px #0001;display:flex;flex-direction:column;align-items:flex-start;overflow:hidden;position:relative;justify-content:flex-start;gap:0;">
+            <div class="bg-watermark"></div>
+            <div class="top-bar" style="width:100%;padding:0.3rem 0 0.1rem 0;display:flex;flex-direction:column;align-items:flex-end;">
+                <div class="top-bar-center" style="display:flex;flex-direction:column;align-items:flex-end;gap:0.2rem;">
+                    <svg width="260" height="54" viewBox="0 0 260 54" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;margin-bottom:0.1rem;margin-right:4mm;">
+                        <rect x="8" y="4" width="38" height="46" rx="8" fill="#0d47a1" stroke="#0d47a1" stroke-width="2"/>
+                        <rect x="16" y="12" width="22" height="22" rx="6" fill="#fff"/>
+                        <rect x="24" y="38" width="6" height="2" rx="1" fill="#fff"/>
+                        <circle cx="27" cy="44" r="2" fill="#fff"/>
+                        <text x="58" y="36" fill="#0d47a1" font-size="32" font-family="Montserrat, Arial, sans-serif" font-weight="bold">FraseGo</text>
+                    </svg>
+                </div>
+            </div>
+            <div class="controls" style="width:100%;display:flex;gap:0.3rem;justify-content:center;align-items:center;margin-bottom:0.2rem;">
+                <select id="temaSelect">
+                    <option value="motivacional">Motivacional</option>
+                    <option value="amor">Amor</option>
+                    <option value="amizade">Amizade</option>
+                    <option value="felicidade">Felicidade</option>
+                    <option value="superacao">Superação</option>
+                    <option value="gratidao">Gratidão</option>
+                    <option value="reflexao">Reflexão</option>
+                    <option value="sucesso">Sucesso</option>
+                    <option value="familia">Família</option>
+                    <option value="inspiração">Inspiração</option>
+                </select>
+                <select id="fonteSelect">
+                    <option value="Roboto">Roboto</option>
+                    <option value="Montserrat">Montserrat</option>
+                    <option value="Lato">Lato</option>
+                    <option value="Inter">Inter</option>
+                    <option value="Open Sans">Open Sans</option>
+                    <option value="Space Mono">Space Mono</option>
+                </select>
+            </div>
+            <div class="mid-bar" style="width:100%;display:flex;justify-content:center;align-items:center;gap:0.3rem;margin-bottom:0;">
+                <button id="btnFavoritos" title="Favoritos" class="favoritos-btn">
+                    <svg width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/><title>Favoritos</title></svg>
+                </button>
+                <button id="btnFavoritar" class="coracao-btn" title="Favoritar">
+                    <svg id="coracaoIcon" width="28" height="28" viewBox="0 0 24 24" fill="#e53935" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:auto;">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </button>
+            </div>
+            <div id="frase" class="frase" style="width:100%;text-align:center;word-break:break-word;font-size:1.08rem;line-height:1.28;margin-top:0.05rem;margin-bottom:0.15rem;"></div>
+            <div style="width:100%;display:flex;flex-direction:row;justify-content:center;align-items:center;gap:0.2rem;margin-bottom:0.13rem;">
+                <button id="btnTags" class="tags-btn" title="Gerar tags para redes sociais" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;min-width:36px;min-height:36px;">
+                    <span id="iconeJogoDaVelha" style="font-size:2.1rem;line-height:1;color:#222;transition:color 0.2s;">#</span>
+                </button>
+                <button id="btnCopiarFrase" class="copiar-btn" title="Copiar frase" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;min-width:36px;min-height:36px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                </button>
+            </div>
+            <div style="width:100%;display:flex;flex-direction:row;justify-content:space-between;align-items:flex-end;gap:0.2rem;margin-top:auto;margin-bottom:0.08rem;">
+                <div class="botoes bottom-botoes" style="display:flex;gap:0.2rem;flex:1;">
+                    <button id="voltarFrase" style="flex:1;min-width:0;">Frase Anterior</button>
+                    <button id="novaFrase" style="flex:1;min-width:0;">Nova Frase</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tagsModal" style="display:none;position:fixed;z-index:1000;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.25);align-items:center;justify-content:center;">
+        <div class="tags-content" style="background:#fff;padding:2rem 1.5rem;border-radius:1.2rem;max-width:95vw;width:400px;box-shadow:0 2px 16px #0002;display:flex;flex-direction:column;align-items:center;">
+            <h2 style="margin-bottom:1rem;">Sugestões de Tags</h2>
+            <div id="tagsLacunas" style="width:100%;display:flex;flex-direction:column;gap:1.2rem;"></div>
+            <button class="fechar-modal" id="fecharTags" style="margin-top:1.5rem;">Fechar</button>
+        </div>
+    </div>
+    <div id="favoritosModal">
+        <div class="favoritos-content">
+            <div class="favoritos-header">
+                <h2>Favoritos</h2>
+                <button id="btnRemoverTodosFavs" class="remover-todos-btn" title="Remover todos os favoritos">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e53935" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="6" width="18" height="13" rx="2"/>
+                        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                        <line x1="1" y1="6" x2="23" y2="6"/>
+                        <line x1="10" y1="11" x2="10" y2="17"/>
+                        <line x1="14" y1="11" x2="14" y2="17"/>
+                    </svg>
+                </button>
+            </div>
+            <ul class="favoritos-lista" id="favoritosLista"></ul>
+            <button class="fechar-modal" id="fecharFavoritos">Fechar</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

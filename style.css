@@ -1,0 +1,407 @@
+.remover-fav-btn {
+    background: #fff;
+    border: 2px solid #e53935;
+    border-radius: 50%;
+    width: clamp(28px, 1.5vw + 1.2rem, 36px);
+    height: clamp(28px, 1.5vw + 1.2rem, 36px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: border 0.2s, background 0.2s;
+    padding: 0;
+    vertical-align: middle;
+}
+.remover-fav-btn svg {
+    display: block;
+    width: 70%;
+    height: 70%;
+    max-width: 20px;
+    max-height: 20px;
+    min-width: 12px;
+    min-height: 12px;
+    stroke: #e53935;
+    fill: none;
+    transition: fill 0.2s, stroke 0.2s;
+}
+.remover-fav-btn:active {
+    border-color: #b71c1c;
+}
+.remover-todos-btn {
+    background: #fff;
+    border: 2px solid #e53935;
+    border-radius: 50%;
+    width: clamp(28px, 1.5vw + 1.2rem, 36px);
+    height: clamp(28px, 1.5vw + 1.2rem, 36px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 8px;
+    margin-top: 2px;
+    transition: border 0.2s, background 0.2s;
+    padding: 0;
+    vertical-align: middle;
+    visibility: visible;
+}
+.remover-todos-btn svg {
+    display: block;
+    width: 70%;
+    height: 70%;
+    max-width: 20px;
+    max-height: 20px;
+    min-width: 12px;
+    min-height: 12px;
+    stroke: #e53935;
+    fill: none;
+    transition: fill 0.2s, stroke 0.2s;
+}
+.remover-todos-btn:active {
+    border-color: #b71c1c;
+}
+.favoritos-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 8px;
+}
+.copiar-fav-btn {
+    background: #fff;
+    border: 2px solid #222;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: border 0.2s, background 0.2s;
+    padding: 0;
+    vertical-align: middle;
+}
+.copiar-fav-btn svg {
+    display: block;
+    stroke: #222;
+    fill: none;
+    transition: fill 0.2s, stroke 0.2s;
+}
+.copiar-fav-btn:active {
+    border-color: #2196f3;
+}
+.copiar-btn {
+    background: #fff;
+    border: 2px solid #222;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: border 0.2s, background 0.2s;
+    padding: 0;
+}
+.copiar-btn svg {
+    display: block;
+    stroke: #222;
+    fill: none;
+    transition: fill 0.2s, stroke 0.2s;
+}
+.copiar-btn:active {
+    border-color: #2196f3;
+}
+.mid-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin: 18px 0 0 0;
+}
+.bottom-botoes {
+    margin-top: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.7rem;
+    width: 100%;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+}
+.bottom-botoes button {
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&family=Space+Mono:wght@400;700&display=swap');
+
+body {
+    background: #f6f6f6;
+    color: #222;
+    font-family: 'Inter', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    padding: 18px 8px 24px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 540px;
+    max-width: 420px;
+    width: 100vw;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    margin-top: 0;
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+select {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1.5px solid #0d47a1;
+    background: rgba(255,255,255,0.65);
+    font-size: 1rem;
+    color: #0d47a1;
+    outline: none;
+    box-shadow: 0 1px 6px #0001;
+    transition: background 0.2s, border 0.2s;
+    backdrop-filter: blur(2px);
+}
+
+select:focus {
+    background: rgba(255,255,255,0.85);
+    border: 1.5px solid #08306b;
+}
+
+
+.frase-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 18px 0 0 0;
+    min-height: 90px;
+    width: 100%;
+    background: #fff;
+    border-radius: 1.1rem;
+    box-shadow: 0 2px 12px #0001;
+    padding: 1.2rem 1rem 0.7rem 1rem;
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
+.frase {
+    font-size: 1.18rem;
+    min-height: 60px;
+    width: 100%;
+    transition: font-family 0.3s;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    word-break: break-word;
+    line-height: 1.45;
+    overflow-wrap: break-word;
+}
+
+.coracao-btn {
+    background: #fff;
+    border: 2px solid #222;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border 0.2s, background 0.2s;
+    margin-left: 8px;
+    padding: 0;
+}
+.coracao-btn svg {
+    display: block;
+    stroke: #222;
+    fill: none;
+    transition: fill 0.2s, stroke 0.2s;
+    margin: auto;
+    position: static;
+    left: unset;
+    top: unset;
+    transform: none;
+}
+.coracao-btn.favorito svg {
+    fill: #e53935;
+    stroke: #e53935;
+}
+.coracao-btn:focus {
+    outline: 2px solid #e53935;
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.top-bar-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 0;
+}
+.favoritos-btn {
+    background: #fff;
+    border: 2px solid #222;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border 0.2s, background 0.2s;
+    margin-left: 8px;
+    padding: 0;
+}
+.favoritos-btn svg {
+    display: block;
+    stroke: #222;
+    fill: none;
+    transition: fill 0.2s, stroke 0.2s;
+}
+.favoritos-btn.ativo svg {
+    fill: #ff9800;
+    stroke: #ff9800;
+}
+
+#favoritosModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+#favoritosModal.ativo {
+    visibility: visible;
+    opacity: 1;
+}
+.favoritos-content {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    padding: 32px 24px;
+    max-width: 400px;
+    width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.favoritos-content h2 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    font-size: 1.5rem;
+}
+.favoritos-lista {
+    width: 100%;
+    margin-bottom: 18px;
+}
+.favoritos-lista li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1rem;
+    text-align: left;
+}
+.fechar-modal {
+    background: #ff9800;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+}
+.fechar-modal:hover {
+    background: #e65100;
+}
+
+button {
+    background: #0d47a1;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #08306b;
+}
+
+/* Marca d'água temática no fundo */
+.bg-watermark {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.33;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70% auto;
+  transition: background-image 0.3s, opacity 0.2s;
+}
+.frase-box > *:not(.bg-watermark) {
+  position: relative;
+  z-index: 1;
+}
