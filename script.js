@@ -129,7 +129,9 @@ if (btnCopiarFrase) {
 if (btnCopiarFavoritos) {
     btnCopiarFavoritos.addEventListener('click', () => {
         const fonte = fonteSelect.value;
-        const texto = favoritos.length ? favoritos.join('\n') : '';
+        const texto = favoritos.length
+            ? favoritos.map(fav => fav.frase + (fav.fonte ? ` [${fav.fonte}]` : '')).join('\n')
+            : '';
         copiarTextoComFonte(texto, fonte);
     });
 }
@@ -161,7 +163,7 @@ const frases = {
         "Acredite no seu potencial e vá além.",
         "A disciplina é o caminho para o sucesso.",
         "Grandes jornadas começam com um passo.",
-        "A motivação te faz começar, o hábito te faz continuar.",
+        "A motivação te faz começar, a Disciplina te faz continuar.",
         "Seja a sua melhor versão todos os dias.",
         "A vitória pertence a quem não desiste.",
         "Acredite nos seus sonhos e lute por eles.",
@@ -641,6 +643,7 @@ function mostrarFrase(nova = true) {
         atualizarCoracao();
         atualizarBotoes();
     }, 0);
+} // <-- ESTA CHAVE FALTAVA AQUI!
 function atualizarCoracao() {
     if (!btnFavoritar) return;
     const fraseAtual = fraseDiv.textContent;
@@ -736,7 +739,9 @@ function renderizarFavoritos() {
         const btnRemover = document.createElement('button');
         btnRemover.className = 'remover-fav-btn';
         btnRemover.title = 'Remover dos favoritos';
-        btnRemover.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e53935" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="1" y1="6" x2="23" y2="6"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>`;
+        btnRemover.innerHTML = `<svg viewBox="0 0 64 64" fill="none" stroke="#e53935" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M32 56s-20-13.6-20-28A12 12 0 0 1 32 16a12 12 0 0 1 20 12c0 14.4-20 28-20 28z"/>
+</svg>`;
         btnRemover.addEventListener('click', () => {
             if (confirm('Remover esta frase dos favoritos?')) {
                 // Busca o índice real do favorito (caso duplicados ou reordenação)
@@ -767,7 +772,6 @@ if (btnRemoverTodosFavs) {
             atualizarCoracao();
         }
     });
-}
 }
 
 function voltarFrase() {
@@ -816,6 +820,16 @@ const watermarks = {
   default: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="140" height="140" rx="40" fill="%230d47a1" fill-opacity="0.13"/></svg>')`,
 };
 
+const bgSVGs = {
+  amor: `url('data:image/svg+xml;utf8,<svg viewBox="0 0 64 64" fill="none" stroke="%23e53935" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 56s-20-13.6-20-28A12 12 0 0 1 32 16a12 12 0 0 1 20 12c0 14.4-20 28-20 28z"/></svg>')`,
+  superacao: `url('data:image/svg+xml;utf8,<svg viewBox="0 0 64 64" fill="none" stroke="%231976d2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 56l16-32 16 32 16-24"/><path d="M40 24V8h12v8z"/></svg>')`,
+  gratidao: `url('data:image/svg+xml;utf8,<svg viewBox="0 0 64 64" fill="none" stroke="%23ff9800" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 40c0 8 8 16 12 16s12-8 12-16"/><path d="M32 56V32"/><path d="M12 32c0-8 8-16 20-16s20 8 20 16"/></svg>')`,
+  reflexao: `url('data:image/svg+xml;utf8,<svg viewBox="0 0 64 64" fill="none" stroke="%231976d2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="32" cy="36" rx="20" ry="12"/><ellipse cx="16" cy="48" rx="4" ry="2"/><ellipse cx="48" cy="48" rx="4" ry="2"/></svg>')`,
+  sucesso: `url('data:image/svg+xml;utf8,<svg viewBox="0 0 64 64" fill="none" stroke="%231976d2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="20" y="8" width="24" height="24" rx="8"/><path d="M32 32v16"/><path d="M24 48h16"/><path d="M12 16v4a12 12 0 0 0 12 12"/><path d="M52 16v4a12 12 0 0 1-12 12"/></svg>')`,
+  familia: `url('data:image/svg+xml;utf8,<svg viewBox="0 0 64 64" fill="none" stroke="%231976d2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="28" r="6"/><circle cx="44" cy="28" r="6"/><circle cx="32" cy="44" r="8"/><path d="M20 34v10M44 34v10"/></svg>')`,
+  inspiração: `url('data:image/svg+xml;utf8,<svg viewBox="0 0 64 64" fill="none" stroke="%231976d2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="32" cy="28" rx="16" ry="16"/><rect x="24" y="44" width="16" height="8" rx="4"/><path d="M32 52v4"/></svg>')`
+};
+
 function atualizarMarcaDagua() {
   if (!bgWatermark || !temaSelectWatermark) return;
   const tema = temaSelectWatermark.value;
@@ -831,3 +845,22 @@ if (temaSelectWatermark) {
 mostrarFrase();
 mudarFonte();
 atualizarCoracao();
+
+// Ativar modo escuro
+const btnDarkMode = document.getElementById('btnDarkMode');
+btnDarkMode?.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+});
+
+// Print da área principal
+const btnPrint = document.getElementById('btnPrint');
+btnPrint?.addEventListener('click', () => {
+    const fraseBox = document.querySelector('.frase-box');
+    if (!fraseBox) return;
+    html2canvas(fraseBox, {backgroundColor: null}).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'frasego.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+});

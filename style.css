@@ -119,7 +119,7 @@
     align-items: center;
     justify-content: center;
     gap: 18px;
-    margin: 18px 0 0 0;
+    margin-top: 0.5rem; /* ou 0, ou ajuste conforme desejar */
 }
 .bottom-botoes {
     margin-top: 1.1rem;
@@ -149,6 +149,29 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+body.dark-mode {
+    background: #181a1b !important;
+    color: #eee !important;
+}
+body.dark-mode .frase-box {
+    background: #23272b !important;
+    color: #eee !important;
+    box-shadow: 0 2px 12px #0006;
+}
+body.dark-mode select,
+body.dark-mode button,
+body.dark-mode input {
+    background: #23272b !important;
+    color: #eee !important;
+    border-color: #444 !important;
+}
+body.dark-mode svg {
+    stroke: #eee !important;
+}
+body.dark-mode #iconeJogoDaVelha {
+    color: #fff !important;
 }
 
 .container {
@@ -202,6 +225,13 @@ select:focus {
     border: 1.5px solid #08306b;
 }
 
+body.dark-mode select,
+body.dark-mode button,
+body.dark-mode input {
+    background: #23272b !important;
+    color: #eee !important;
+    border-color: #444 !important;
+}
 
 .frase-box {
     display: flex;
@@ -209,14 +239,14 @@ select:focus {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    margin: 18px 0 0 0;
+    margin: 0 auto;
+    padding: calc(2cm + 1.2rem) 5vw calc(2cm + 0.7rem) 5vw; /* top, right, bottom, left */
     min-height: 90px;
     width: 100%;
+    max-width: 420px;
     background: #fff;
     border-radius: 1.1rem;
     box-shadow: 0 2px 12px #0001;
-    padding: 1.2rem 1rem 0.7rem 1rem;
-    max-width: 100%;
     overflow-wrap: break-word;
 }
 
@@ -384,6 +414,35 @@ button:hover {
     background: #08306b;
 }
 
+body.dark-mode svg {
+    stroke: #eee !important;
+}
+body.dark-mode .favoritos-content,
+body.dark-mode .tags-content {
+    background: #23272b !important;
+    color: #eee !important;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+}
+
+body.dark-mode .favoritos-content h2,
+body.dark-mode .tags-content h2 {
+    color: #fff !important;
+}
+
+body.dark-mode .favoritos-lista li {
+    border-bottom: 1px solid #444 !important;
+    color: #eee !important;
+}
+
+body.dark-mode .fechar-modal {
+    background: #444 !important;
+    color: #fff !important;
+}
+
+body.dark-mode .fechar-modal:hover {
+    background: #222 !important;
+}
+
 /* Marca d'água temática no fundo */
 .bg-watermark {
   position: absolute;
@@ -400,8 +459,48 @@ button:hover {
   background-position: center;
   background-size: 70% auto;
   transition: background-image 0.3s, opacity 0.2s;
+  margin-top: 2cm;
 }
 .frase-box > *:not(.bg-watermark) {
   position: relative;
   z-index: 1;
 }
+
+body.dark-mode .bg-watermark {
+    opacity: 0.5 !important; /* mais visível */
+    filter: brightness(1.5) grayscale(0.2) contrast(1.1);
+}
+
+body:not(.dark-mode) .bg-watermark {
+    filter: drop-shadow(0 0 6px #fff8) drop-shadow(0 0 2px #0002);
+    opacity: 0.;
+}
+
+#iconeJogoDaVelha {
+    font-weight: 400 !important;
+}
+
+<div class="botoes-copiar-tags" style="...">
+    <!-- botões jogo da velha e copiar -->
+</div>
+
+<svg viewBox="0 0 64 64" fill="none" stroke="#1976d2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M8 56l16-32 16 32 16-24"/>
+  <path d="M40 24V8h12v8z"/>
+</svg>
+
+.botoes-copiar-tags {
+    margin-top: 2.5rem; /* ajuste conforme desejar */
+    margin-bottom: 1.2rem; /* opcional, para separar dos botões azuis */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+<select id="pastaFavorito">
+  <option value="Postagens">Postagens</option>
+  <option value="Pessoais">Pessoais</option>
+  <option value="Trabalho">Trabalho</option>
+  <option value="Outros">Outros</option>
+</select>
