@@ -18,9 +18,14 @@
             <div class="top-bar" style="width:100%;padding:0.3rem 0 0.5rem 0;display:flex;flex-direction:row;align-items:flex-start;justify-content:space-between;">
                 <!-- Botão Print à esquerda (agora é câmera) -->
                 <button id="btnPrint" title="Salvar imagem para postagem" style="background:none;border:none;cursor:pointer;padding:0.3rem 0.5rem 0 0.5rem;">
-                    <!-- Ícone de câmera SVG -->
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="7" width="18" height="13" rx="2"/>
+                   <!-- Ícone de compartilhamento -->
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 12v2a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4v-2"/>
+  <polyline points="16 6 12 2 8 6"/>
+  <line x1="12" y1="2" x2="12" y2="15"/>
+</svg>
+
+                    <rect x="3" y="7" width="18" height="13" rx="2"/>
                         <circle cx="12" cy="13.5" r="4"/>
                         <path d="M5 7l2-3h10l2 3"/>
                     </svg>
@@ -202,8 +207,48 @@ function updateBgWatermark() {
 temaSelect.addEventListener('change', updateBgWatermark);
 updateBgWatermark();
 
-// Adiciona a funcionalidade de impressão (salvar como imagem)
 document.getElementById('btnPrint').addEventListener('click', function () {
+    const fraseBox = document.querySelector('.frase-box');
+    
+    // Elementos a ocultar temporariamente
+    const elementosOcultos = [
+        '#btnPrint',
+        '#btnTags',
+        '#btnFavoritos',
+        '#btnCopiarFrase',
+        '#btnFavoritar',
+        '#btnDarkMode',
+        '#voltarFrase',
+        '#novaFrase'
+    ];
+    
+    // Esconde os elementos
+    elementosOcultos.forEach(sel => {
+        const el = document.querySelector(sel);
+        if (el) el.style.display = 'none';
+    });
+
+    // Aguarda um pouquinho antes de capturar
+    setTimeout(() => {
+        html2canvas(fraseBox).then(function (canvas) {
+            const tema = document.getElementById('temaSelect').value;
+            const data = new Date();
+            const nomeArquivo = `frase-${tema}-${data.getFullYear()}-${(data.getMonth()+1).toString().padStart(2, '0')}-${data.getDate().toString().padStart(2, '0')}.png`;
+
+            const link = document.createElement('a');
+            link.download = nomeArquivo;
+            link.href = canvas.toDataURL();
+            link.click();
+
+            // Restaura os elementos
+            elementosOcultos.forEach(sel => {
+                const el = document.querySelector(sel);
+                if (el) el.style.display = '';
+            });
+        });
+    }, 200); // tempo para aplicar os hides corretamente
+});
+
     // Seleciona a área da frase-box para exportar como imagem
     const fraseBox = document.querySelector('.frase-box');
     // Usa html2canvas para capturar a área

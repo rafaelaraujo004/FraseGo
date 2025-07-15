@@ -527,3 +527,8 @@ body.dark-mode .tags-content div {
   color: #eee !important;
   border-color: #444 !important;
 }
+#logoApp {
+  margin-left: -7cm;
+position: relative;
+left: -8cm;
+}
