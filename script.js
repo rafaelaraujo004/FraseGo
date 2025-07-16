@@ -930,17 +930,17 @@ const bgWatermark = document.querySelector('.bg-watermark');
 var temaSelectWatermark = window.temaSelect || document.getElementById('temaSelect');
 
 const watermarks = {
-  motivacional: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="90" cy="90" r="80" fill="%230d47a1" fill-opacity="0.13"/><path d="M90 40v60l40 20" stroke="%230d47a1" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>')`,
-  amor: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M90 150s-50-30-50-70a30 30 0 0 1 60 0 30 30 0 0 1 60 0c0 40-50 70-50 70z" fill="%230d47a1" fill-opacity="0.13" stroke="%230d47a1" stroke-width="6"/></svg>')`,
-  amizade: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="80" r="24" fill="%230d47a1" fill-opacity="0.13"/><circle cx="120" cy="80" r="24" fill="%230d47a1" fill-opacity="0.13"/><rect x="40" y="110" width="100" height="30" rx="15" fill="%230d47a1" fill-opacity="0.13"/></svg>')`,
-  felicidade: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="90" cy="90" r="70" fill="%230d47a1" fill-opacity="0.13"/><path d="M65 100c5 10 25 20 50 0" stroke="%230d47a1" stroke-width="6" stroke-linecap="round"/><circle cx="70" cy="80" r="6" fill="%230d47a1"/><circle cx="110" cy="80" r="6" fill="%230d47a1"/></svg>')`,
-  superacao: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="40" y="120" width="100" height="20" rx="10" fill="%230d47a1" fill-opacity="0.13"/><rect x="80" y="60" width="20" height="60" rx="10" fill="%230d47a1" fill-opacity="0.13"/><circle cx="90" cy="50" r="12" fill="%230d47a1" fill-opacity="0.13"/></svg>')`,
-  gratidao: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M90 140c-30-20-50-40-50-60a30 30 0 0 1 60 0 30 30 0 0 1 60 0c0 20-20 40-50 60z" fill="%230d47a1" fill-opacity="0.13"/></svg>')`,
-  reflexao: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="90" cy="110" rx="60" ry="30" fill="%230d47a1" fill-opacity="0.13"/><ellipse cx="90" cy="70" rx="30" ry="15" fill="%230d47a1" fill-opacity="0.13"/></svg>')`,
-  sucesso: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="60" y="100" width="60" height="40" rx="20" fill="%230d47a1" fill-opacity="0.13"/><polygon points="90,40 110,100 70,100" fill="%230d47a1" fill-opacity="0.13"/></svg>')`,
-  familia: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="110" r="18" fill="%230d47a1" fill-opacity="0.13"/><circle cx="120" cy="110" r="18" fill="%230d47a1" fill-opacity="0.13"/><rect x="60" y="110" width="60" height="30" rx="15" fill="%230d47a1" fill-opacity="0.13"/></svg>')`,
-  inspiração: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="90" cy="120" rx="40" ry="18" fill="%230d47a1" fill-opacity="0.13"/><rect x="80" y="40" width="20" height="60" rx="10" fill="%230d47a1" fill-opacity="0.13"/><circle cx="90" cy="35" r="10" fill="%230d47a1" fill-opacity="0.13"/></svg>')`,
-  default: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="140" height="140" rx="40" fill="%230d47a1" fill-opacity="0.13"/></svg>')`,
+  motivacional: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="90" cy="90" r="80" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="55%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="38" font-family="Montserrat" dy=".3em">💪</text></svg>')`,
+  amor: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M90 150s-50-30-50-70a30 30 0 0 1 60 0 30 30 0 0 1 60 0c0 40-50 70-50 70z" fill="%23e53935" fill-opacity="0.13" stroke="%23e53935" stroke-width="6"/><text x="50%" y="55%" text-anchor="middle" fill="%23e53935" fill-opacity="0.18" font-size="38" font-family="Montserrat" dy=".3em">❤️</text></svg>')`,
+  amizade: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="80" r="24" fill="%230d47a1" fill-opacity="0.10"/><circle cx="120" cy="80" r="24" fill="%230d47a1" fill-opacity="0.10"/><rect x="40" y="110" width="100" height="30" rx="15" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="60%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">🤝</text></svg>')`,
+  felicidade: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="90" cy="90" r="70" fill="%23ffd600" fill-opacity="0.13"/><path d="M65 100c5 10 25 20 50 0" stroke="%23ffb300" stroke-width="6" stroke-linecap="round"/><circle cx="70" cy="80" r="6" fill="%23ffb300"/><circle cx="110" cy="80" r="6" fill="%23ffb300"/><text x="50%" y="60%" text-anchor="middle" fill="%23ffd600" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">😊</text></svg>')`,
+  superacao: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="40" y="120" width="100" height="20" rx="10" fill="%230d47a1" fill-opacity="0.10"/><rect x="80" y="60" width="20" height="60" rx="10" fill="%230d47a1" fill-opacity="0.10"/><circle cx="90" cy="50" r="12" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="60%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">🏆</text></svg>')`,
+  gratidao: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M90 140c-30-20-50-40-50-60a30 30 0 0 1 60 0 30 30 0 0 1 60 0c0 20-20 40-50 60z" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="60%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">🙏</text></svg>')`,
+  reflexao: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="90" cy="110" rx="60" ry="30" fill="%230d47a1" fill-opacity="0.10"/><ellipse cx="90" cy="70" rx="30" ry="15" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="60%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">💭</text></svg>')`,
+  sucesso: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="60" y="100" width="60" height="40" rx="20" fill="%230d47a1" fill-opacity="0.10"/><polygon points="90,40 110,100 70,100" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="60%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">📈</text></svg>')`,
+  familia: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="110" r="18" fill="%230d47a1" fill-opacity="0.10"/><circle cx="120" cy="110" r="18" fill="%230d47a1" fill-opacity="0.10"/><rect x="60" y="110" width="60" height="30" rx="15" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="60%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">👨‍👩‍👧‍👦</text></svg>')`,
+  inspiração: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="90" cy="120" rx="40" ry="18" fill="%230d47a1" fill-opacity="0.10"/><rect x="80" y="40" width="20" height="60" rx="10" fill="%230d47a1" fill-opacity="0.10"/><circle cx="90" cy="35" r="10" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="60%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">💡</text></svg>')`,
+  default: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="140" height="140" rx="40" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="60%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">✨</text></svg>')`,
 };
 
 function atualizarMarcaDagua() {
@@ -1035,4 +1035,187 @@ if (btnCopiarFrase) {
         document.body.removeChild(el);
         alert('Frase copiada para a área de transferência!');
     });
+}
+// Modal Premium
+const modalPremium = document.getElementById("modalPremium");
+const abrirModalPremium = document.getElementById("abrirModalPremium");
+const fecharModalPremium = document.getElementById("fecharModalPremium");
+const btnAssinarPremium = document.getElementById("btnAssinarPremium");
+
+// Abrir o modal
+abrirModalPremium.addEventListener("click", () => {
+    modalPremium.style.display = "flex";
+});
+
+// Fechar o modal
+fecharModalPremium.addEventListener("click", () => {
+    modalPremium.style.display = "none";
+});
+
+// Clique em "Assinar agora"
+btnAssinarPremium.addEventListener('click', () => {
+  localStorage.setItem(STORAGE_KEY_PREMIUM, 'true');
+  alert('✅ Premium ativado! Todos os temas, fontes e frases ilimitadas foram liberados.');
+  modalAssinarPremium.close();
+  atualizarBloqueios();
+  location.reload();
+});
+if (isPremium()) {
+  localStorage.removeItem(STORAGE_KEY_CONTAGEM);
+  localStorage.removeItem(STORAGE_KEY_DATA);
+}
+// --- Controle de status Premium ---
+
+// Recupera o status Premium do localStorage (persistência)
+let isPremiumActive = localStorage.getItem('premium') === 'true';
+
+// ...existing code...
+
+// Função para liberar os temas conforme o status Premium
+function liberarTemas() {
+  const temaSelect = document.getElementById('temaSelect');
+  if (!temaSelect) return;
+
+  // Define todos os temas disponíveis (inclui Premium)
+  const todosTemas = [
+    {value: 'motivacional', label: 'Motivacional'},
+    {value: 'amor', label: 'Amor'},
+    {value: 'amizade', label: 'Amizade'},
+    {value: 'felicidade', label: 'Felicidade'},
+    {value: 'superacao', label: 'Superação'},
+    {value: 'gratidao', label: 'Gratidão'},
+    {value: 'reflexao', label: 'Reflexão'},
+    {value: 'sucesso', label: 'Sucesso'},
+    {value: 'familia', label: 'Família'},
+    {value: 'inspiracao', label: 'Inspiração'}
+  ];
+
+  // Define temas free (pode ajustar conforme quiser)
+  const temasFree = ['motivacional', 'amor', 'amizade', 'felicidade'];
+
+  // Salva o tema selecionado antes de atualizar
+  const temaSelecionado = temaSelect.value;
+
+  // Escolhe quais temas mostrar
+  const temasParaMostrar = isPremiumActive 
+    ? todosTemas 
+    : todosTemas.filter(t => temasFree.includes(t.value));
+
+  // Limpa as opções atuais
+  temaSelect.innerHTML = '';
+
+  // Popula o select com os temas liberados
+  temasParaMostrar.forEach(tema => {
+    const option = document.createElement('option');
+    option.value = tema.value;
+    option.textContent = tema.label;
+    temaSelect.appendChild(option);
+  });
+
+  // Se o tema selecionado antes ainda existe, mantém selecionado
+  if (temasParaMostrar.some(t => t.value === temaSelecionado)) {
+    temaSelect.value = temaSelecionado;
+  } else {
+    temaSelect.selectedIndex = 0;
+  }
+}
+
+// --- Ativação Premium ---
+// Botão que ativa o premium (id no seu botão)
+const btnAtivarPremium = document.getElementById('btnAtivarPremium');
+
+if (btnAtivarPremium) {
+  btnAtivarPremium.addEventListener('click', () => {
+    isPremiumActive = true;
+    localStorage.setItem('premium', 'true');
+    liberarTemas();
+    alert('Premium ativado! Todos os temas e frases foram liberados.');
+  });
+}
+
+// ...existing code...
+
+// Remova ou comente a função atualizarBloqueios() e qualquer chamada a ela
+// pois a lógica de liberarTemas já cuida do bloqueio/liberação dos temas
+
+// ...existing code...
+
+// --- Inicialização ---
+
+// Atualiza a lista de temas no carregamento da página
+liberarTemas();
+
+// Exemplo: Função para gerar nova frase ao clicar no botão "Nova Frase"
+const btnNovaFrase = document.getElementById('novaFrase');
+
+if (btnNovaFrase) {
+  btnNovaFrase.addEventListener('click', () => {
+    if (!podeGerarFrase()) {
+      alert(`Você atingiu o limite diário de ${limiteFree} frases. Ative o Premium para liberar frases ilimitadas.`);
+      return;
+    }
+
+    // Aqui você chama sua função que troca a frase na tela
+    gerarNovaFrase(); // função que você deve ter para mudar a frase
+
+    registrarGeracaoFrase();
+  });
+}
+
+// --- Substitua ou adapte esta função para a sua lógica de gerar frases ---
+function gerarNovaFrase() {
+  // Sua lógica para atualizar a frase exibida
+  // Exemplo:
+  const frasesExemplo = {
+    motivacional: ['Força e foco!', 'Nunca desista!'],
+    amor: ['Amor é tudo.', 'O amor transforma.'],
+    // ... e outros temas
+  };
+
+  const temaAtual = document.getElementById('temaSelect').value;
+  const frasesDoTema = frasesExemplo[temaAtual] || ['Sem frases para esse tema.'];
+
+  const fraseEscolhida = frasesDoTema[Math.floor(Math.random() * frasesDoTema.length)];
+  document.getElementById('frase').textContent = fraseEscolhida;
+}
+function atualizarBloqueios() {
+  const premium = isPremium();
+
+  // Se for premium, libera tudo sem exceções
+  if (premium) {
+    Array.from(temaSelect.options).forEach((option) => {
+      option.disabled = false;
+      option.text = option.text.replace(' (Premium)', '');
+    });
+
+    Array.from(fonteSelect.options).forEach((option) => {
+      option.disabled = false;
+      option.text = option.text.replace(' (Premium)', '');
+    });
+
+    btnNovaFrase.disabled = false;
+    return; // sai da função porque não precisa verificar nada
+  }
+
+  // Se NÃO for premium, aplica as restrições
+  Array.from(temaSelect.options).forEach((option) => {
+    if (TEMAS_PREMIUM.includes(option.value.toLowerCase())) {
+      option.disabled = true;
+      if (!option.text.includes('(Premium)')) {
+        option.text += ' (Premium)';
+      }
+    }
+  });
+
+  Array.from(fonteSelect.options).forEach((option) => {
+    if (FONTES_PREMIUM.includes(option.value)) {
+      option.disabled = true;
+      if (!option.text.includes('(Premium)')) {
+        option.text += ' (Premium)';
+      }
+    }
+  });
+
+  const usadas = getFrasesUsadasHoje();
+  btnNovaFrase.disabled = usadas >= LIMITE_FRASES_GRATUITO;
 }

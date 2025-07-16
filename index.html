@@ -12,7 +12,7 @@
 <body>
     <div class="container" style="width:100vw;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;box-sizing:border-box;padding:0;">
         <div class="frase-box" style="width:100%;max-width:370px;min-width:260px;min-height:calc(420px + 2cm);max-height:calc(98vh + 3cm);background:#fff;border-radius:1.1rem;padding:1.1rem 1.1rem 0.7rem 1.1rem;box-shadow:0 2px 12px #0001;display:flex;flex-direction:column;align-items:center;overflow:hidden;position:relative;justify-content:flex-start;gap:0;">
-            <div class="bg-watermark" id="bgWatermark" style="position:absolute;top:calc(50% - 2.5cm);left:50%;transform:translate(-50%, -50%);width:100%;height:100%;z-index:0;pointer-events:none;display:flex;align-items:center;justify-content:center;">
+            <div class="bg-watermark" id="bgWatermark" style="position:absolute;top:calc(50% - 2.5cm);left:50%;transform:translate(-50%, -50%);width:100%;height:200%;z-index:0;pointer-events:none;display:flex;align-items:center;justify-content:center;">
                 <!-- SVGs dinâmicos serão inseridos via JS conforme o tema -->
             </div>
             <div class="top-bar" style="width:100%;padding:0.3rem 0 0.5rem 0;display:flex;flex-direction:row;align-items:flex-start;justify-content:space-between;">
@@ -287,6 +287,215 @@ document.getElementById('btnPrint').addEventListener('click', function () {
         link.href = canvas.toDataURL();
         link.click();
     });
+</script><script>
+// ==== CONTROLE DE PREMIUM E USO DIÁRIO ====
+
+function isPremium() {
+  return localStorage.getItem('frasego_premium') === 'true';
+}
+
+function ativarPremium() {
+  localStorage.setItem('frasego_premium', 'true');
+  aplicarRestricoes(); // Atualiza os bloqueios
+  alert("✅ Premium ativado com sucesso!");
+}
+
+function aplicarRestricoes() {
+  const premium = isPremium();
+
+  // BLOQUEIO DE FONTES EXCLUSIVAS
+  const fonteSelect = document.getElementById('fonteSelect');
+  const fontesPremium = ['Work Sans', 'Fira Sans'];
+  [...fonteSelect.options].forEach(opt => {
+    opt.disabled = !premium && fontesPremium.includes(opt.value);
+  });
+
+  // BLOQUEIO DE TEMAS EXCLUSIVOS
+  const temaSelect = document.getElementById('temaSelect');
+  const temasPremium = ['sucesso', 'inspiração'];
+  [...temaSelect.options].forEach(opt => {
+    opt.disabled = !premium && temasPremium.includes(opt.value);
+  });
+
+  // BLOQUEIO DE FRASES EXCEDENTES
+  const frasesMaxGratuitas = 5;
+  const usadas = Number(localStorage.getItem('frases_hoje')) || 0;
+  const btnNovaFrase = document.getElementById('novaFrase');
+  btnNovaFrase.disabled = !premium && usadas >= frasesMaxGratuitas;
+}
+
+// CONTADOR DE USO DIÁRIO
+function registrarUsoFrase() {
+  if (!isPremium()) {
+    let usadas = Number(localStorage.getItem('frases_hoje')) || 0;
+    usadas += 1;
+    localStorage.setItem('frases_hoje', usadas);
+    aplicarRestricoes();
+  }
+}
+
+// RESET DIÁRIO AUTOMÁTICO
+(function () {
+  const hoje = new Date().toISOString().split('T')[0];
+  const dataSalva = localStorage.getItem('data_frase');
+  if (dataSalva !== hoje) {
+    localStorage.setItem('data_frase', hoje);
+    localStorage.setItem('frases_hoje', '0');
+  }
+  aplicarRestricoes();
+})();
+
+// VINCULAR AO BOTÃO NOVA FRASE
+document.getElementById('novaFrase').addEventListener('click', registrarUsoFrase);
+
+// OPCIONAL: VINCULAR A UM BOTÃO PARA SIMULAR O PREMIUM
+// (Você pode trocar isso por um botão visível no modal premium real)
+document.addEventListener('DOMContentLoaded', function () {
+  const btnFakePremium = document.createElement('button');
+  btnFakePremium.textContent = "🔓 Ativar Premium";
+  btnFakePremium.style.position = "fixed";
+  btnFakePremium.style.bottom = "12px";
+  btnFakePremium.style.right = "12px";
+  btnFakePremium.style.padding = "10px 14px";
+  btnFakePremium.style.borderRadius = "8px";
+  btnFakePremium.style.background = "#0d47a1";
+  btnFakePremium.style.color = "#fff";
+  btnFakePremium.style.border = "none";
+  btnFakePremium.style.cursor = "pointer";
+  btnFakePremium.style.zIndex = "9999";
+  btnFakePremium.onclick = ativarPremium;
+  document.body.appendChild(btnFakePremium);
+});
 </script>
+<!-- Modal Premium -->
+<div id="modalPremium" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.4);z-index:999;justify-content:center;align-items:center;">
+  <div style="background:#fff;padding:2rem;border-radius:1.2rem;max-width:95vw;width:420px;box-shadow:0 0 20px #0003;display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.2rem;">
+    <h2 style="font-size:1.8rem;color:#0d47a1;">🚀 FraseGo Premium</h2>
+    <p style="font-size:1rem;color:#444;">Desbloqueie todo o poder do FraseGo com recursos exclusivos!</p>
+    <ul style="list-style:none;padding:0;margin:0;text-align:left;width:100%;max-width:320px;">
+      <li style="margin:0.6rem 0;display:flex;align-items:center;gap:0.6rem;">
+        ✅ Acesso ilimitado a frases
+      </li>
+      <li style="margin:0.6rem 0;display:flex;align-items:center;gap:0.6rem;">
+        🖋️ Temas e fontes exclusivas
+      </li>
+      <li style="margin:0.6rem 0;display:flex;align-items:center;gap:0.6rem;">
+        ☁️ Backup dos favoritos
+      </li>
+      <li style="margin:0.6rem 0;display:flex;align-items:center;gap:0.6rem;">
+        🚫 Sem anúncios
+      </li>
+    </ul>
+    <p style="font-size:1.1rem;font-weight:bold;color:#222;">Só R$4,90 por mês</p>
+    <button id="btnAssinarPremium" style="background:#0d47a1;color:#fff;border:none;padding:0.8rem 1.4rem;border-radius:0.7rem;cursor:pointer;font-size:1rem;">Assinar agora</button>
+    <button id="fecharModalPremium" style="margin-top:1rem;background:none;border:none;color:#888;font-size:0.9rem;cursor:pointer;">Fechar</button>
+  </div>
+</div>
+
 </body>
 </html>
+<script>
+// Verifica se o usuário é Premium
+function isPremium() {
+    return localStorage.getItem("isPremium") === "true";
+}
+
+// Limite de frases diárias para usuários gratuitos
+const LIMITE_FRASES_GRATUITO = 5;
+const KEY_DATA = 'dataUltimoUso';
+const KEY_QUANTIDADE = 'frasesUsadasHoje';
+
+function resetarUsoDiario() {
+    const hoje = new Date().toLocaleDateString();
+    localStorage.setItem(KEY_DATA, hoje);
+    localStorage.setItem(KEY_QUANTIDADE, '0');
+}
+
+function verificarLimiteDeFrases() {
+    if (isPremium()) return true;
+
+    const hoje = new Date().toLocaleDateString();
+    const dataSalva = localStorage.getItem(KEY_DATA);
+    if (dataSalva !== hoje) {
+        resetarUsoDiario();
+    }
+
+    let usadas = parseInt(localStorage.getItem(KEY_QUANTIDADE) || '0');
+    if (usadas >= LIMITE_FRASES_GRATUITO) {
+        alert("🚫 Você atingiu o limite de frases diárias grátis.\nTorne-se Premium para acesso ilimitado!");
+        return false;
+    }
+
+    // Incrementa o uso
+    usadas += 1;
+    localStorage.setItem(KEY_QUANTIDADE, usadas.toString());
+    return true;
+}
+
+// Ao clicar no botão de nova frase
+document.getElementById('novaFrase').addEventListener('click', function (e) {
+    if (!verificarLimiteDeFrases()) {
+        e.stopImmediatePropagation();
+        return;
+    }
+    // Aqui segue normalmente a lógica da nova frase (já existente no seu código)
+});
+
+// Botão premium ativa conta
+document.getElementById('btnAssinarPremium')?.addEventListener('click', () => {
+    const confirmar = confirm("Deseja liberar recursos Premium agora?\n\n(Para testes, esta função é simulada)");
+    if (confirmar) {
+        localStorage.setItem("isPremium", "true");
+        alert("✅ Recursos Premium ativados!");
+        location.reload(); // Atualiza a página para aplicar desbloqueios
+    }
+});
+</script>
+<option value="Space Mono" disabled> </option>
+<script>
+// --- Funções existentes já inseridas antes (isPremium, verificarLimiteDeFrases, etc) ---
+
+// Temas e fontes Premium
+const temasPremium = ['inspiração', 'sucesso', 'gratidao'];
+const fontesPremium = ['Space Mono', 'Inter'];
+
+// Desabilita opções se não for Premium
+function bloquearTemasEFonte() {
+    if (!isPremium()) {
+        temasPremium.forEach(valor => {
+            const opt = document.querySelector(`#temaSelect option[value="${valor}"]`);
+            if (opt) {
+                opt.textContent += ' (Premium)';
+                opt.disabled = true;
+            }
+        });
+
+        fontesPremium.forEach(valor => {
+            const opt = document.querySelector(`#fonteSelect option[value="${valor}"]`);
+            if (opt) {
+                opt.textContent += ' (Premium)';
+                opt.disabled = true;
+            }
+        });
+    } else {
+        // Caso seja premium, garante que tudo esteja habilitado
+        document.querySelectorAll('#temaSelect option, #fonteSelect option').forEach(opt => {
+            opt.disabled = false;
+        });
+    }
+}
+
+// Chamada imediata ao carregar o app
+bloquearTemasEFonte();
+
+// Botão Assinar Premium (simulado)
+document.getElementById('btnAssinarPremium')?.addEventListener('click', () => {
+    const confirmar = confirm("Deseja liberar recursos Premium agora?\n\n(Versão de teste)");
+    if (confirmar) {
+        localStorage.setItem("isPremium", "true");
+        alert("✅ Recursos Premium ativados!");
+        location.reload();
+    }
+});
+
+</script>
