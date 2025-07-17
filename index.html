@@ -9,6 +9,9 @@
     <!-- Adicione o script da biblioteca html2canvas aqui -->
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </head>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0d0d0d">
+<meta name="description" content="Frase Go - Encontre inspiração diária com frases motivacionais, de amor, amizade e muito mais. Personalize com temas e fontes exclusivas.">
 <body>
     <div class="container" style="width:100vw;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;box-sizing:border-box;padding:0;">
         <div class="frase-box" style="width:100%;max-width:370px;min-width:260px;min-height:calc(420px + 2cm);max-height:calc(98vh + 3cm);background:#fff;border-radius:1.1rem;padding:1.1rem 1.1rem 0.7rem 1.1rem;box-shadow:0 2px 12px #0001;display:flex;flex-direction:column;align-items:center;overflow:hidden;position:relative;justify-content:flex-start;gap:0;">
@@ -310,7 +313,7 @@ function aplicarRestricoes() {
     opt.disabled = !premium && fontesPremium.includes(opt.value);
   });
 
-  // BLOQUEIO DE TEMAS EXCLUSIVOS
+  // aplicarRestricoes
   const temaSelect = document.getElementById('temaSelect');
   const temasPremium = ['sucesso', 'inspiração'];
   [...temaSelect.options].forEach(opt => {
@@ -395,12 +398,48 @@ document.addEventListener('DOMContentLoaded', function () {
 </body>
 </html>
 <script>
-// Verifica se o usuário é Premium
+// Temas e fontes Premium
+const temasPremium = ['inspiração', 'sucesso', 'gratidao'];
+const fontesPremium = ['Space Mono', 'Inter'];
+
+// Verifica se é premium
 function isPremium() {
     return localStorage.getItem("isPremium") === "true";
 }
 
-// Limite de frases diárias para usuários gratuitos
+// Bloqueia/desbloqueia temas e fontes conforme premium
+function bloquearTemasEFonte() {
+    document.querySelectorAll('#temaSelect option').forEach(opt => {
+        if (temasPremium.includes(opt.value)) {
+            if (!isPremium()) {
+                opt.textContent = opt.textContent.replace(' (Premium)', '') + ' (Premium)';
+                opt.disabled = true;
+            } else {
+                opt.textContent = opt.textContent.replace(' (Premium)', '');
+                opt.disabled = false;
+            }
+        } else {
+            opt.textContent = opt.textContent.replace(' (Premium)', '');
+            opt.disabled = false;
+        }
+    });
+    document.querySelectorAll('#fonteSelect option').forEach(opt => {
+        if (fontesPremium.includes(opt.value)) {
+            if (!isPremium()) {
+                opt.textContent = opt.textContent.replace(' (Premium)', '') + ' (Premium)';
+                opt.disabled = true;
+            } else {
+                opt.textContent = opt.textContent.replace(' (Premium)', '');
+                opt.disabled = false;
+            }
+        } else {
+            opt.textContent = opt.textContent.replace(' (Premium)', '');
+            opt.disabled = false;
+        }
+    });
+}
+
+// Limite de frases diárias para não-premium
 const LIMITE_FRASES_GRATUITO = 5;
 const KEY_DATA = 'dataUltimoUso';
 const KEY_QUANTIDADE = 'frasesUsadasHoje';
@@ -413,20 +452,16 @@ function resetarUsoDiario() {
 
 function verificarLimiteDeFrases() {
     if (isPremium()) return true;
-
     const hoje = new Date().toLocaleDateString();
     const dataSalva = localStorage.getItem(KEY_DATA);
     if (dataSalva !== hoje) {
         resetarUsoDiario();
     }
-
     let usadas = parseInt(localStorage.getItem(KEY_QUANTIDADE) || '0');
     if (usadas >= LIMITE_FRASES_GRATUITO) {
         alert("🚫 Você atingiu o limite de frases diárias grátis.\nTorne-se Premium para acesso ilimitado!");
         return false;
     }
-
-    // Incrementa o uso
     usadas += 1;
     localStorage.setItem(KEY_QUANTIDADE, usadas.toString());
     return true;
@@ -441,61 +476,24 @@ document.getElementById('novaFrase').addEventListener('click', function (e) {
     // Aqui segue normalmente a lógica da nova frase (já existente no seu código)
 });
 
-// Botão premium ativa conta
+// Botão premium ativa conta (simulação ou redirecionamento)
 document.getElementById('btnAssinarPremium')?.addEventListener('click', () => {
+    // Simulação: para produção, redirecione para o pagamento
     const confirmar = confirm("Deseja liberar recursos Premium agora?\n\n(Para testes, esta função é simulada)");
     if (confirmar) {
         localStorage.setItem("isPremium", "true");
         alert("✅ Recursos Premium ativados!");
-        location.reload(); // Atualiza a página para aplicar desbloqueios
-    }
-});
-</script>
-<option value="Space Mono" disabled> </option>
-<script>
-// --- Funções existentes já inseridas antes (isPremium, verificarLimiteDeFrases, etc) ---
-
-// Temas e fontes Premium
-const temasPremium = ['inspiração', 'sucesso', 'gratidao'];
-const fontesPremium = ['Space Mono', 'Inter'];
-
-// Desabilita opções se não for Premium
-function bloquearTemasEFonte() {
-    if (!isPremium()) {
-        temasPremium.forEach(valor => {
-            const opt = document.querySelector(`#temaSelect option[value="${valor}"]`);
-            if (opt) {
-                opt.textContent += ' (Premium)';
-                opt.disabled = true;
-            }
-        });
-
-        fontesPremium.forEach(valor => {
-            const opt = document.querySelector(`#fonteSelect option[value="${valor}"]`);
-            if (opt) {
-                opt.textContent += ' (Premium)';
-                opt.disabled = true;
-            }
-        });
-    } else {
-        // Caso seja premium, garante que tudo esteja habilitado
-        document.querySelectorAll('#temaSelect option, #fonteSelect option').forEach(opt => {
-            opt.disabled = false;
-        });
-    }
-}
-
-// Chamada imediata ao carregar o app
-bloquearTemasEFonte();
-
-// Botão Assinar Premium (simulado)
-document.getElementById('btnAssinarPremium')?.addEventListener('click', () => {
-    const confirmar = confirm("Deseja liberar recursos Premium agora?\n\n(Versão de teste)");
-    if (confirmar) {
-        localStorage.setItem("isPremium", "true");
-        alert("✅ Recursos Premium ativados!");
+        bloquearTemasEFonte();
         location.reload();
     }
 });
 
+// Sempre rodar ao carregar
+document.addEventListener('DOMContentLoaded', bloquearTemasEFonte);
+</script>
+<link rel="manifest" href="manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js');
+  }
 </script>

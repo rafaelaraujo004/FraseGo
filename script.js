@@ -385,7 +385,7 @@ const frases = {
     "Felicidade é encontrar paz mesmo nos desafios.",
     "Ser feliz é celebrar a vida em cada instante."
     ],
-    superacao: [
+    superação: [
         "A superação começa com a decisão de tentar.",
     "Desafios existem para serem vencidos.",
     "Cada obstáculo é uma oportunidade de crescer.",
@@ -930,19 +930,18 @@ const bgWatermark = document.querySelector('.bg-watermark');
 var temaSelectWatermark = window.temaSelect || document.getElementById('temaSelect');
 
 const watermarks = {
-  motivacional: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="90" cy="90" r="80" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="55%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="38" font-family="Montserrat" dy=".3em">💪</text></svg>')`,
-  amor: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M90 150s-50-30-50-70a30 30 0 0 1 60 0 30 30 0 0 1 60 0c0 40-50 70-50 70z" fill="%23e53935" fill-opacity="0.13" stroke="%23e53935" stroke-width="6"/><text x="50%" y="55%" text-anchor="middle" fill="%23e53935" fill-opacity="0.18" font-size="38" font-family="Montserrat" dy=".3em">❤️</text></svg>')`,
-  amizade: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="80" r="24" fill="%230d47a1" fill-opacity="0.10"/><circle cx="120" cy="80" r="24" fill="%230d47a1" fill-opacity="0.10"/><rect x="40" y="110" width="100" height="30" rx="15" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="60%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">🤝</text></svg>')`,
-  felicidade: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="90" cy="90" r="70" fill="%23ffd600" fill-opacity="0.13"/><path d="M65 100c5 10 25 20 50 0" stroke="%23ffb300" stroke-width="6" stroke-linecap="round"/><circle cx="70" cy="80" r="6" fill="%23ffb300"/><circle cx="110" cy="80" r="6" fill="%23ffb300"/><text x="50%" y="60%" text-anchor="middle" fill="%23ffd600" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">😊</text></svg>')`,
-  superacao: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="40" y="120" width="100" height="20" rx="10" fill="%230d47a1" fill-opacity="0.10"/><rect x="80" y="60" width="20" height="60" rx="10" fill="%230d47a1" fill-opacity="0.10"/><circle cx="90" cy="50" r="12" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="60%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">🏆</text></svg>')`,
-  gratidao: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M90 140c-30-20-50-40-50-60a30 30 0 0 1 60 0 30 30 0 0 1 60 0c0 20-20 40-50 60z" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="60%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">🙏</text></svg>')`,
-  reflexao: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="90" cy="110" rx="60" ry="30" fill="%230d47a1" fill-opacity="0.10"/><ellipse cx="90" cy="70" rx="30" ry="15" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="60%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">💭</text></svg>')`,
-  sucesso: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="60" y="100" width="60" height="40" rx="20" fill="%230d47a1" fill-opacity="0.10"/><polygon points="90,40 110,100 70,100" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="60%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">📈</text></svg>')`,
-  familia: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="110" r="18" fill="%230d47a1" fill-opacity="0.10"/><circle cx="120" cy="110" r="18" fill="%230d47a1" fill-opacity="0.10"/><rect x="60" y="110" width="60" height="30" rx="15" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="60%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">👨‍👩‍👧‍👦</text></svg>')`,
-  inspiração: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="90" cy="120" rx="40" ry="18" fill="%230d47a1" fill-opacity="0.10"/><rect x="80" y="40" width="20" height="60" rx="10" fill="%230d47a1" fill-opacity="0.10"/><circle cx="90" cy="35" r="10" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="60%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">💡</text></svg>')`,
-  default: `url('data:image/svg+xml;utf8,<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="140" height="140" rx="40" fill="%230d47a1" fill-opacity="0.10"/><text x="50%" y="60%" text-anchor="middle" fill="%230d47a1" fill-opacity="0.18" font-size="32" font-family="Montserrat" dy=".3em">✨</text></svg>')`,
+  motivacional: `url('data:image/svg+xml;utf8,<svg width="180" height="180" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="55%" text-anchor="middle" font-size="110" font-family="Montserrat" dy=".3em">💪</text></svg>')`,
+  amor: `url('data:image/svg+xml;utf8,<svg width="180" height="180" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="55%" text-anchor="middle" font-size="110" font-family="Montserrat" dy=".3em">❤️</text></svg>')`,
+  amizade: `url('data:image/svg+xml;utf8,<svg width="180" height="180" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="55%" text-anchor="middle" font-size="110" font-family="Montserrat" dy=".3em">🤝</text></svg>')`,
+  felicidade: `url('data:image/svg+xml;utf8,<svg width="180" height="180" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="55%" text-anchor="middle" font-size="110" font-family="Montserrat" dy=".3em">😃</text></svg>')`,
+  superacao: `url('data:image/svg+xml;utf8,<svg width="180" height="180" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="55%" text-anchor="middle" font-size="110" font-family="Montserrat" dy=".3em">🏆</text></svg>')`,
+  gratidao: `url('data:image/svg+xml;utf8,<svg width="180" height="180" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="55%" text-anchor="middle" font-size="110" font-family="Montserrat" dy=".3em">🙏</text></svg>')`,
+  reflexao: `url('data:image/svg+xml;utf8,<svg width="180" height="180" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="55%" text-anchor="middle" font-size="110" font-family="Montserrat" dy=".3em">💭</text></svg>')`,
+  sucesso: `url('data:image/svg+xml;utf8,<svg width="180" height="180" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="55%" text-anchor="middle" font-size="110" font-family="Montserrat" dy=".3em">📈</text></svg>')`,
+  familia: `url('data:image/svg+xml;utf8,<svg width="180" height="180" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="55%" text-anchor="middle" font-size="110" font-family="Montserrat" dy=".3em">👨‍👩‍👧‍👦</text></svg>')`,
+  inspiração: `url('data:image/svg+xml;utf8,<svg width="180" height="180" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="55%" text-anchor="middle" font-size="110" font-family="Montserrat" dy=".3em">💡</text></svg>')`,
+  default: `url('data:image/svg+xml;utf8,<svg width="180" height="180" xmlns="http://www.w3.org/2000/svg"><text x="50%" y="55%" text-anchor="middle" font-size="110" font-family="Montserrat" dy=".3em">✨</text></svg>')`,
 };
-
 function atualizarMarcaDagua() {
   if (!bgWatermark || !temaSelectWatermark) return;
   const tema = temaSelectWatermark.value;
@@ -1218,4 +1217,61 @@ function atualizarBloqueios() {
 
   const usadas = getFrasesUsadasHoje();
   btnNovaFrase.disabled = usadas >= LIMITE_FRASES_GRATUITO;
+}
+const KEY_COMPARTILHAMENTO = 'compartilhamentoHoje';
+const LIMITE_COMPARTILHAMENTO = 1;
+
+function verificarLimiteCompartilhamento() {
+  if (isPremium()) return true;
+  const hoje = new Date().toLocaleDateString();
+  const dataCompart = localStorage.getItem('dataCompartilhamento');
+  if (dataCompart !== hoje) {
+    localStorage.setItem('dataCompartilhamento', hoje);
+    localStorage.setItem(KEY_COMPARTILHAMENTO, '0');
+  }
+  let usados = parseInt(localStorage.getItem(KEY_COMPARTILHAMENTO) || '0');
+  if (usados >= LIMITE_COMPARTILHAMENTO) {
+    alert("🚫 Você já compartilhou/baixou uma frase hoje. Torne-se Premium para uso ilimitado!");
+    return false;
+  }
+  usados += 1;
+  localStorage.setItem(KEY_COMPARTILHAMENTO, usados.toString());
+  return true;
+}
+const CACHE_NAME = 'frasego-v1';
+const urlsToCache = [
+  '/',
+  '/index.html',
+  '/style.css',
+  '/script.js'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
+  );
+});
+
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(response => response || fetch(event.request))
+  );
+});
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (cacheName !== CACHE_NAME) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+    .then(() => console.log('Service Worker registrado com sucesso!'))
+    .catch(error => console.log('Erro ao registrar Service Worker:', error));
 }
