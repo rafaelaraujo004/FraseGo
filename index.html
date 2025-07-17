@@ -492,8 +492,53 @@ document.getElementById('btnAssinarPremium')?.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', bloquearTemasEFonte);
 </script>
 <link rel="manifest" href="manifest.json">
+<link rel="manifest" href="/manifest.json">
 <script>
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js');
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(() => console.log('✅ Service Worker registrado com sucesso'))
+      .catch(error => console.error('❌ Falha ao registrar SW:', error));
   }
 </script>
+<script>
+  // Verifica se o usuário está usando um tema escuro
+  const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+  // Função para aplicar o tema escuro
+  function aplicarTemaEscuro() {
+    document.body.classList.add("dark-mode");
+    document.querySelectorAll(".frase-box, .top-bar, .controls, .mid-bar, .botoes-interativos").forEach(el => {
+      el.classList.add("dark-mode");
+    });
+  }
+
+  // Função para remover o tema escuro
+  function removerTemaEscuro() {
+    document.body.classList.remove("dark-mode");
+    document.querySelectorAll(".frase-box, .top-bar, .controls, .mid-bar, .botoes-interativos").forEach(el => {
+      el.classList.remove("dark-mode");
+    });
+  }
+
+  // Verifica o estado inicial do tema
+  if (prefersDarkScheme.matches) {
+    aplicarTemaEscuro();
+  }
+
+  // Adiciona um listener para mudanças no tema
+  prefersDarkScheme.addEventListener("change", e => {
+    if (e.matches) {
+      aplicarTemaEscuro();
+    } else {
+      removerTemaEscuro();
+    }
+  });
+
+  // Botão de alternância de modo escuro
+  document.getElementById('btnDarkMode').addEventListener('click', () => {
+    if (document.body.classList.contains("dark-mode")) {
+      removerTemaEscuro();
+    } else {
+      aplicarTemaEscuro();
+    }
+  });
