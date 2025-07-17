@@ -1,22 +1,38 @@
 {
   "name": "FraseGo",
   "short_name": "FraseGo",
-  "description": "Gere frases motivacionais com estilo e compartilhe em segundos.",
-  "start_url": "./index.html",
+  "id": "/",
+  "start_url": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
   "background_color": "#ffffff",
-  "theme_color": "#1A1A1A",
+  "theme_color": "#0d47a1",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "icons/icon-192x192.png",
+      "src": "/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icons/icon-512x512.png",
+      "src": "/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "screenshots": [
+    {
+      "src": "/screenshots/home.png",
+      "type": "image/png",
+      "sizes": "640x480",
+      "label": "Página Inicial"
+    }
+  ],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "description": "Gere frases motivacionais com estilo e compartilhe em segundos."
 }
