@@ -1,4 +1,6 @@
 {
+"id": "/?source=pwa",
+"version": "1.0.0",
   "name": "FraseGo",
   "short_name": "FraseGo",
   "description": "Gere frases motivacionais com estilo e compartilhe em segundos.",
@@ -7,6 +9,7 @@
   "background_color": "#ffffff",
   "theme_color": "#1a1a1a",
   "orientation": "portrait",
+  "categories": ["productivity", "lifestyle", "quotes"],
   "scope": "/",
   "lang": "pt-BR",
   "icons": [
